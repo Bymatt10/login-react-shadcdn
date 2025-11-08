@@ -47,10 +47,6 @@ export const TarifaTable = () => {
     return filteredTarifas.slice(startIndex, startIndex + ITEMS_PER_PAGE)
   }, [filteredTarifas, currentPage])
 
-  const handleUpdate = (id: number, updatedData: Partial<Tarifa>) => {
-    console.log('Actualizando fila:', id, updatedData)
-  }
-
   return (
     <div className="space-y-4">
       <TarifaFilters
@@ -75,33 +71,17 @@ export const TarifaTable = () => {
           <Table>
             <TableHeader className="bg-brand-primary sticky top-0">
               <TableRow className="hover:bg-brand-primary">
-                <TableHead className="text-xs whitespace-nowrap">Num</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">F. Vuelo</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Num. Guía</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Consignatario</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Vend</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Pcs</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Volumen</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Tarifa</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Flete</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Carrier</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Agent</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Total AWB</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Trf Neta</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Dif Tarifa</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Renta TRF</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Pago CASS</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Renta CASS</TableHead>
-                <TableHead className="text-xs whitespace-nowrap">Remark</TableHead>
+                <TableHead className="text-xs whitespace-nowrap text-white">Fecha</TableHead>
+                <TableHead className="text-xs whitespace-nowrap text-white">Num. Guía</TableHead>
+                <TableHead className="text-xs whitespace-nowrap text-white">Consignatario</TableHead>
+                <TableHead className="text-xs whitespace-nowrap text-white text-right">Tarifa</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
-              {paginatedTarifas.map((tarifa, index) => (
+              {paginatedTarifas.map((tarifa) => (
                 <TarifaTableRow
                   key={tarifa.id}
-                  rowNumber={(currentPage - 1) * ITEMS_PER_PAGE + index + 1}
-                  initialData={tarifa}
-                  onUpdate={handleUpdate}
+                  data={tarifa}
                 />
               ))}
             </TableBody>
