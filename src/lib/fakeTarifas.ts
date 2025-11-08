@@ -23,6 +23,7 @@ const consignatarios = [
 ]
 
 const vendedores = ['RR', 'MR', 'PAC', 'NR']
+const carriers = ['KLM', 'AFR', 'LTU', 'IBE', 'AAL']
 
 const generateGuia = (index: number): string => {
   const prefix = Math.floor(100 + Math.random() * 500)
